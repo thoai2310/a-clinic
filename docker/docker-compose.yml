@@ -1,0 +1,67 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: s-clinic-database
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+    volumes:
+      - ${MYSQL_DATA_PATH}:/var/lib/mysql
+    ports:
+      - "${MYSQL_PORT}:3306"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: s-clinic-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend/Dockerfile
+    container_name: s-clinic-backend
+    restart: unless-stopped
+    depends_on:
+      - database
+      - redis
+    volumes:
+      - ${BACKEND_PATH}:/var/www/html
+      - backend_storage:/var/www/html/storage/logs
+    ports:
+      - "${BACKEND_PORT}:80"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/frontend/Dockerfile
+    container_name: s-clinic-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    volumes:
+      - ${FRONTEND_PATH}:/app
+      - /app/node_modules
+    ports:
+      - "${FRONTEND_PORT}:5173"
+    networks:
+      - app-network
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  backend_storage:
+
+networks:
+  app-network:
+    driver: bridge
