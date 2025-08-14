@@ -1,0 +1,750 @@
+{
+	"info": {
+		"_postman_id": "8fd7dae9-d506-4ca1-97a9-882cf03349c6",
+		"name": "zalo clinic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20325143",
+		"_collection_link": "https://galactic-crater-574992.postman.co/workspace/New-Team-Workspace~ecb9c4db-4e4d-4537-ab29-ee4e5544d7b8/collection/20325143-8fd7dae9-d506-4ca1-97a9-882cf03349c6?action=share&source=collection_link&creator=20325143"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Authen",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test Admin\",\n    \"email\": \"testclinic@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/auth/register",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"testclinic@example.com\",\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/auth/login",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"testclinic@example.com\",\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/auth/me",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashbord stats",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"testclinic@example.com\",\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/dashboard/stats",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"dashboard",
+										"stats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Form",
+					"item": [
+						{
+							"name": "detail a form",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/forms/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"forms",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign form to customer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"form_id\": 1,\n    \"customer_ids\": [1]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/forms/assign-to-customers",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"forms",
+										"assign-to-customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list form",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/forms",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"forms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/forms/all",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"forms",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/customers/all",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"customers",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign to Customer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"form_id\": 1,\n    \"customer_ids\": [1, 2]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/forms/assign-to-customers",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"forms",
+										"assign-to-customers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tag",
+					"item": [
+						{
+							"name": "list tag with paginate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/tags",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"tags"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiUrl}}/tags/all",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"tags",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"tag 5\",\n    \"key\": \"tag_5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/tags",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"tags"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Message",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": 1,\n    \"title\": \"Công ty TNHH S-Clinic\",\n    \"content\": \"Mời bạn thực hiện khảo sát sau\",\n    \"forms\": 1,\n    \"tags\": [1,2,3],\n    \"customerIds\": [1,2,3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/messages",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "messages",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": 1,\n    \"title\": \"Công ty TNHH S-Clinic\",\n    \"content\": \"Mời bạn thực hiện khảo sát sau\",\n    \"forms\": 1,\n    \"tags\": [1,2,3],\n    \"customerIds\": [1,2,3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/messages",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rule",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n       \"name\": \"Người có nguy cơ tiểu đường\",\n       \"form_id\": 1,\n       \"tag_id\": 1,\n       \"logic_operator\": \"AND\",\n       \"description\": \"Gán tag cho khách hàng có nguy cơ gan nhiễm mỡ\",\n       \"conditions\": [\n         {\n           \"question_id\": 1,\n           \"question_option_id\": 1,\n           \"condition_type\": \"equals\",\n           \"condition_value\": null\n         }\n       ]\n     }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/auto-tag-rule-groups",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"auto-tag-rule-groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n       \"name\": \"Người có nguy cơ tiểu đường\",\n       \"form_id\": 1,\n       \"tag_id\": 3,\n       \"logic_operator\": \"OR\",\n       \"description\": \"Gán tag cho khách hàng có nguy cơ gan nhiễm mỡ\",\n       \"conditions\": [\n         {\n           \"question_id\": 1,\n           \"question_option_id\": 4,\n           \"condition_type\": \"equals\",\n           \"condition_value\": null\n         },\n         {\n           \"question_id\": 2,\n           \"question_option_id\": 5,\n           \"condition_type\": \"equals\",\n           \"condition_value\": null\n         }\n       ]\n     }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/auto-tag-rule-groups",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"auto-tag-rule-groups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Webhook",
+					"item": [
+						{
+							"name": "webhook url",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"update_id\": 879759957,\n    \"callback_query\": {\n        \"id\": \"5270978130155978301\",\n        \"from\": {\n            \"id\": 5522212526,\n            \"is_bot\": false,\n            \"first_name\": \"Thoai\",\n            \"last_name\": \"Nguyen\",\n            \"language_code\": \"en\"\n        },\n        \"message\": {\n            \"message_id\": 76,\n            \"from\": {\n                \"id\": 8364197852,\n                \"is_bot\": true,\n                \"first_name\": \"My Clinic Bot\",\n                \"username\": \"thoai_clinic_bot\"\n            },\n            \"chat\": {\n                \"id\": 5522212526,\n                \"first_name\": \"Thoai\",\n                \"last_name\": \"Nguyen\",\n                \"type\": \"private\"\n            },\n            \"date\": 1754905831,\n            \"text\": \"\\ud83c\\udfaf Quy tr\\u00ecnh kh\\u00e1m b\\u1ec7nh t\\u1ea1i EMS\\n\\n\\ud83d\\udccb B\\u01b0\\u1edbc 4: Thanh to\\u00e1n vi\\u1ec7n ph\\u00ed\\n\\nThanh to\\u00e1n vi\\u1ec7n ph\\u00ed\\n\\n\\ud83d\\udcca Ti\\u1ebfn \\u0111\\u1ed9: 75%\",\n            \"entities\": [\n                {\n                    \"offset\": 3,\n                    \"length\": 27,\n                    \"type\": \"bold\"\n                },\n                {\n                    \"offset\": 35,\n                    \"length\": 27,\n                    \"type\": \"bold\"\n                }\n            ],\n            \"reply_markup\": {\n                \"inline_keyboard\": [\n                    [\n                        {\n                            \"text\": \"Ho\\u00e0n th\\u00e0nh\",\n                            \"callback_data\": \"complete_step:4:7\"\n                        }\n                    ]\n                ]\n            }\n        },\n        \"chat_instance\": \"-6203268919715593139\",\n        \"data\": \"complete_step:4:7\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{webhook}}",
+									"host": [
+										"{{webhook}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Workflow",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Quy trình khám bệnh tại EMS\",\n    \"description\": \"Quy trình khám bệnh tại EMS\",\n    \"steps\": [\n      {\n        \"title\": \"Lấy phiếu khám\",\n        \"description\": \"Lấy phiếu khám\",\n        \"completion_message\": \"Lấy phiếu khám hoàn thành!\"\n      },\n      {\n        \"title\": \"Khám tại phòng bác sĩ chỉ định\", \n        \"description\": \"Khám tại phòng bác sĩ chỉ định\",\n        \"completion_message\": \"Khám tại phòng bác sĩ chỉ định\"\n      },\n       {\n        \"title\": \"Xét nghiệm\", \n        \"description\": \"Xét nghiệm\",\n        \"completion_message\": \"Xét nghiệm\"\n      },\n      {\n        \"title\": \"Thanh toán viện phí\", \n        \"description\": \"Thanh toán viện phí\",\n        \"completion_message\": \"Hoàn thành\"\n      }\n    ]\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/workflows",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"workflows"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "starting a workflow with a customer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwtToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Quy trình khám bệnh tại EMS\",\n    \"description\": \"Quy trình khám bệnh tại EMS\",\n    \"steps\": [\n      {\n        \"title\": \"Lấy phiếu khám\",\n        \"description\": \"Lấy phiếu khám\",\n        \"completion_message\": \"Lấy phiếu khám hoàn thành!\"\n      },\n      {\n        \"title\": \"Khám tại phòng bác sĩ chỉ định\", \n        \"description\": \"Khám tại phòng bác sĩ chỉ định\",\n        \"completion_message\": \"Khám tại phòng bác sĩ chỉ định\"\n      },\n       {\n        \"title\": \"Xét nghiệm\", \n        \"description\": \"Xét nghiệm\",\n        \"completion_message\": \"Xét nghiệm\"\n      },\n      {\n        \"title\": \"Thanh toán viện phí\", \n        \"description\": \"Thanh toán viện phí\",\n        \"completion_message\": \"Hoàn thành\"\n      }\n    ]\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/workflows",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"workflows"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "https://zalo-clinic.test/api",
+			"type": "string"
+		},
+		{
+			"key": "jwtToken",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3phbG8tY2xpbmljLnRlc3QvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTM2Njg4NzcsImV4cCI6MTc1MzY3MjQ3NywibmJmIjoxNzUzNjY4ODc3LCJqdGkiOiIxV0dIbDZTbzMwMEhvTUM3Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.-imIgRKqocvxbVIFhjt7omGzoPZUtrL0F0FdV_4_uxs",
+			"type": "string"
+		},
+		{
+			"key": "webhook",
+			"value": "https://zalo-clinic.test/webhook",
+			"type": "string"
+		}
+	]
+}
